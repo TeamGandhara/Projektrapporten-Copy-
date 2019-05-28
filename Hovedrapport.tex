@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Disse linjer formaterer dokumentet og er ikke synlige i rapporten:
+\input{Rapporten/00000_Preamble}    % Preamblen indlæses
+\usepackage{subfiles}               % Underdokumenter indlæses
+%-------------------------------RAPPORT START--------------------
+\begin{document}                    % Dokumentstarten defineres
+%-------------------------------FORMALIASIDER--------------------
+\frontmatter                        % Formaliasiderne indeholder                                                       % - romersk nummerering (i, ii, iii etc.)
+\subfile{Rapporten/0000_Forside}    % Forsiden indlæses
+\subfile{Rapporten/000_Titelblad}   % Titelbladet indlæses
+\subfile{Rapporten/1_abstract}      % Abstract indlæses
+\subfile{Rapporten/00_Forord}       % Forord indlæses
+    \newpage                        % Ny side defineres
+    \clearpage                      % T.o.C. begyndes på ny side
+\tableofcontents*                   % T.o.C. indsættes 
+    \newpage                        % Resten af siden for T.o.C. tømmes
+    \clearpage                      % Rydning af siderest
+    \setcounter{page}{1}            % Sidetalsnummerering starter fra 1
+\mainmatter                         % Lang forklaring...Bare ignorér der!
+%------------------- DETTE ER FORMATERING - IGNORÉR---------------
+\setcounter{page}{1}                % Sidetalsnummerering starter fra 1
+\assignpagestyle{\chapter}{plain}   % Formatering fjernes for kapitelsider
+\fancypagestyle{plain}{% nyt nyt nyt!!
+%\fancyhf{} 
+\fancyfoot[C]{Side \thepage\ af \pageref{LastPage}}
+\copypagestyle{plain}{rgstyle}
+\makeheadrule{plain}{0pt}{0pt}}
+\fancyfoot[C]{Side \thepage\ af \pageref{LastPage}}
+%-----------------------------------------------------------------
+%-------------------------- HOVEDRAPPORT -------------------------
+%-----------------------------------------------------------------
+
+%---------------------- KAPITEL 1: INDLEDENDE TING ---------------
+\subfile{Rapporten/01_Indledning}   
+\subfile{Rapporten/1.1_Problemformulering} 
+\subfile{Rapporten/1.2_Anlaegsbeskrivelse.tex}
+
+%---------------------- KAPITEL 2: DIMENSIONERING ----------------
+\subfile{Rapporten/2.1_EnergiBalance_Kompress_udv.tex}   
+\subfile{Rapporten/2.2_KompressorBeregninger.tex}      
+\subfile{Rapporten/2.3_Fordamper_ud.tex}   
+\subfile{Rapporten/2.4_Kondensator_ud.tex}
+\subfile{Rapporten/2.5_Ventil_ud.tex}
+\subfile{Rapporten/2.6_Tab_i_systemet}
+
+%---------------------- KAPITEL 3: INSTRUMENTERING ---------------
+\subfile{Rapporten/3_instrumentering}
+\subfile{Rapporten/4_programmering}
+
+%------------------------ KAPITEL 4: MILJØ -----------------------
+\subfile{Rapporten/5_miljo}
+
+%------------------------ KAPITEL 5: FORSØG ----------------------
+\subfile{Rapporten/6_Forsoegresultater.tex}
+
+%-------------------- KAPITEL 6: SAMMENFATNING -------------------
+\subfile{Rapporten/7_Sammenfatning}
+\subfile{Rapporten/Litteraturliste}
+
+%------------------- ALT DET ANDET INTESTINUM FINIS --------------
+\subfile{Rapporten/Appendiks} 
+\subfile{Rapporten/Bilag}
+\end{document}                                               

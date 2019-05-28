@@ -1,0 +1,841 @@
+\documentclass[../Hovedrapport.tex]{subfiles}
+
+\mathindent 0.0in
+\usepackage[ansinew]{inputenc}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{silver}{rgb}{0.75,0.75,0.75}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{aqua}{rgb}{0.5,1,1}
+\definecolor{navy}{rgb}{0.0,0.0,0.5}
+\definecolor{orange}{rgb}{1.0,0.5,0.0}
+\definecolor{teal}{rgb}{0.25,0.5,0.5}
+\definecolor{olive}{rgb}{0.5,0.5,0.0}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{brown}{rgb}{0.5,0.25,0.0}
+\definecolor{fuchsia}{rgb}{1.0,0.5,1.0}
+\definecolor{buff}{rgb}{1.0,0.94,0.80}
+\definecolor{lime}{rgb}{0.5,1.0,0.0}
+\setlength{\headsep}{-0,6in}
+\setlength{\textheight}{9in}
+\setlength{\footskip}{1.0 in}
+\setlength{\oddsidemargin}{-0,2in}
+\setlength{\evensidemargin}{-0,2in}
+\setlength{\textwidth}{6,8in}
+\usepackage{longtable}
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower .3em\hbox{#1}\quad\hrulefill}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\F}[1]{\mbox{$#1$}}
+\newcommand{\K}[1]{\mbox{\sf#1\ \ \mit}}
+\newcommand{\KS}[1]{\mbox{\sf\ \ #1\ \ \mit}}
+\newcommand{\SC}[1]{\mbox{`#1'}\  }
+\newcommand{\V}[1]{\mbox{$ #1 $}}
+\newcommand{\I}{\mbox{\hspace{0.20in}}}
+\newcommand{\temperature}{\mathrm{T}}
+\newcommand{\pressure}{\mathrm{P}}
+\newcommand{\volume}{\mathrm{v}}
+\newcommand{\density}{\mathrm{\rho}}
+\newcommand{\intenergy}{\mathrm{u}}
+\newcommand{\enthalpy}{\mathrm{h}}
+\newcommand{\entropy}{\mathrm{s}}
+\newcommand{\molarmass}{\mathrm{MW}}
+\newcommand{\enthalpyfusion}{\mathrm{\Delta h_{fusion}}}
+\newcommand{\quality}{\mathrm{x}}
+\newcommand{\viscosity}{\mathrm{\mu}}
+\newcommand{\conductivity}{\mathrm{k}}
+\newcommand{\prandtl}{\mathrm{P_r}}
+\newcommand{\cp}{\mathrm{c_p}}
+\newcommand{\cv}{\mathrm{c_v}}
+\newcommand{\specheat}{\mathrm{c_p}}
+\newcommand{\soundspeed}{\mathrm{c}}
+\newcommand{\wetbulb}{\mathrm{wb}}
+\newcommand{\humrat}{\mathrm{\omega}}
+\newcommand{\acentricfactor}{\mathrm{\omega}}
+\newcommand{\relhum}{\mathrm{\phi}}
+\newcommand{\dewpoint}{\mathrm{DP}}
+\newcommand{\volexpcoef}{\mathrm{\beta}}
+\newcommand{\compressibilityfactor}{\mathrm{Z}}
+\newcommand{\surfacetension}{\mathrm{\gamma}}
+\newcommand{\tcrit}{\mathrm{T_{crit}}}
+\newcommand{\pcrit}{\mathrm{P_{crit}}}
+\newcommand{\vcrit}{\mathrm{v_{crit}}}
+\newcommand{\ttriple}{\mathrm{T_{triple}}}
+\newcommand{\fugacity}{\mathrm{fugacity}}
+\newcommand{\tsat}{\mathrm{T_{sat}}}
+\newcommand{\psat}{\mathrm{P_{sat}}}
+\newcommand{\eklj}{\mathrm{ek_{LJ}}}
+\newcommand{\sigmalj}{\mathrm{\sigma_{LJ}}}
+\newcommand{\isentropicexponent}{\mathrm{k_{s}}}
+\newcommand{\thermaldiffusivity}{\mathrm{\alpha}}
+\newcommand{\kinematicviscosity}{\mathrm{\nu}}
+\newcommand{\isothermalcompress}{\mathrm{K_{T}}}
+
+
+\begin{document}
+
+MODEL TIL BEREGNINGER På FORDAMPER
+
+\subsection*{Beregninger}
+
+\vspace{0.10in}
+\noindent
+\rm Beregning p\aa eksisterende fordamper\newline
+ \newline
+ Fremgangsm\aade:\newline
+ \newline
+For at beregne Varmegennemgangstal, U og kuldeydelsen, $\phi$$_{V}$, skal nedenst\aaende fremgangsm\aade benyttes.\newline
+Hvert punkt kan først udføres n\aar alle dets underpunkter er udført.\newline
+ \newline
+ \newline
+	1 - Beregn den logaritmiske temperaturdifferens, ${\delta t}$$_{m}$\newline
+ \newline
+	      1.1 - til dette benyttes formlen for middeltemperaturdifferens fra Aages noter om lamelvarmevekslere. [den kan findes et andet sted]\newline
+ \newline
+ \newline
+	2 - Beregn den totale Varmeovergangsmodstand, SigmaR\newline
+ \newline
+	      2.1 - Beregn Varmeovergangsmodstand, R$_{ou}$, ved konvektion p\aa lameller og rør\newline
+ \newline
+	            2.1.1 - bestem varmeovergangstal p\aa lameller og rør til luft, $\alpha$$_{u}$, ud fra Th. E. Schmidts modelligning for Nusselts tal p\aa ribberørbundt\newline
+	                  2.1.1.1 - beregn Nusselts tal ved brug af 2. del af modelligningen\newline
+	                  2.1.1.2 - beregn $\alpha$$_{u}$ ud fra nusselts tal og 1. del af modelligningen\newline
+ \newline
+	            2.1.2 - Bestem det ydre overfladeareal, A$_{u}$ (denne er allerede udregnet som A$_{t}$ i afsnit 2.1.1.1)\newline
+ \newline
+	            2.1.3 - Bestem finnevirkningsgraden, $\eta$$_{R}$\newline
+	                  2.1.3.1 - Dette gøres som beskrevet i Danvak Grundbog s. 424\newline
+ \newline
+ \newline
+	      2.2 - Beregn Varmeovergangsmodstand, R$_{oi}$, ved konvektion indvendigt i rør\newline
+ \newline
+ 	            2.2.1 - Bestem varmeovergangstallet over rørets indervæg, $\alpha$$_{i.}$ Dette gøres ud fra Bo Pierres metode [køleteknik afsnit 6]\newline
+	                  2.2.1.1 - Bestem nusselts tal med Bo Pierres metode\newline
+	                  2.2.1.2 - Benyt denne nusselts tal til at bestemme varmeovergangstallet $\alpha$$_{i}$\newline
+	 \newline
+	            2.2.2 - Bestem rørets indre overfladeareal, A$_{i}$\newline
+ \newline
+ \newline
+	      2.3 - Beregn Varmeovergangsmodstand i rørvæg, R$_{rør}$\newline
+ \newline
+	            2.3.1 - dette gøres med formlen for varmeledningsmodstand i rørvæg [noter om lamelvarmeveklser - eller termodynamik afsnit 9]\newline
+ \newline
+	      2.4 - læg de tre varmeovergangsmodstande sammen\newline
+ \newline
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+ \newline
+Selve udregningerne:
+\begin{verbatim}
+$REFERENCE R134a IIR
+\end{verbatim}  \begin{verbatim}
+$UnitSystem SI K bar J mass deg
+\end{verbatim}  \begin{equation}
+\label{EES Eqn:1}
+R\$ = \SC{R134a}		 
+\mbox{\I Kølemiddel i systemet }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Temperaturer i systemet:
+\begin{equation}
+\label{EES Eqn:2}
+t_{L;1} =  \left( 10 + 273,15 \right)    \   \left[ \rm K \right]	 
+\mbox{\I Luftens temperatur før fordamper [C] (rumtemperatur)}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:3}
+t_{L;2} =  \left( 6 + 273,15 \right)    \   \left[ \rm K \right]	 
+\mbox{\I Luftens temperatur efter fordamper [C] i første omgang gættes denne.}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm i slutningen af dokumenter gives der en mere korrekt værdi for udgangstemperaturen t$_{L;3}$
+
+\vspace{0.10in}
+\noindent
+\rm der skal $\nu$ prøves frem indtil t$_{L;2}$ ~ t$_{L;3}$
+\begin{equation}
+\label{EES Eqn:4}
+t_{R;1} =  \left(  \left( -8 \right)  + 273,15 \right)    \   \left[ \rm K \right]	 
+\mbox{\I kølemidlets temperatur før fordamper [C] }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:5}
+t_{R;2} = t_{R;1	} 
+\mbox{\I der antages at kølemidlet har konstant temperatur gennem fordamperen}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:6}
+\epsilon = 1	 
+\mbox{\I Korrektionsfaktor for krydsstrøm. hvis der er konstant t på en af siderne, sættes epsilon til 1 [køleteknik s. 47 figur 2.13]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:7}
+t_{Lm} = \frac {t_{L;1}+t_{L;2}}{ 2	 } 
+\mbox{\I Middeltemperatur for luft [K]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:8}
+\phi_{ønsk} = 773   \   \left[ \rm W \right]	 
+\mbox{\I Ønsket kuldeydelse i fordamperen [W]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Varmevekslergeometri:
+\begin{equation}
+\label{EES Eqn:9}
+N_{serie} = 1	 
+\mbox{\I Antal ens varmevekslere i serie bag hinanden }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm rør
+\begin{equation}
+\label{EES Eqn:10}
+L_{1rør} = 0,22   \   \left[ \rm m \right]	 
+\mbox{\I Længdet af ét rør i varmeveksleren [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:11}
+N_{rør} = 24\cdot N_{serie	} 
+\mbox{\I antal gange røret passerer gennem varmeveksler}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:12}
+N_{rækker} = 3 \cdot  N_{serie	} 
+\mbox{\I antal rørrækker i alt}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:13}
+L_{rør} = L_{1rør} \cdot  N_{rør	} 
+\mbox{\I total længde af rør [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:14}
+d_{u} = 8   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I rørets ydre diameter [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:15}
+d_{i} = 7   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I Rørets indre diameter [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:16}
+s_{q} = 25   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I centerafstand mellem to rør lodret over hinanden [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:17}
+s_{r} = 18   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I centerafstand mellem to rør diagonalt ved siden af hinanden [m] (s$_{r}$ = b$_{ribber}$ ved kun 1 rørrække eller ved flugtende rør) }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:18}
+rør\$ = \SC{Copper} 	 
+\mbox{\I Materiale rørene er lavet af }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm ribber
+\begin{equation}
+\label{EES Eqn:19}
+h_{ribber} = 200   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I højden af én ribbe [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:20}
+b_{ribber} = 37   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I bredden af én ribbe [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:21}
+N_{ribber} = 71	 
+\mbox{\I antal ribber på varmeveksler}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:22}
+\V{tykkelse} _{Ribber} = 0,1   \   \left[ \rm mm \right] \cdot  \rm { \left|0,001000000\ \frac {\rm{m}}{\rm{mm}}\right|}	 
+\mbox{\I Tykkelse af ribber [m]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:23}
+Ribbe\$ = \SC{Aluminum}	 
+\mbox{\I Materiale ribberne er lavet af }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm S. 425 - 4. udgave
+
+\vspace{0.10in}
+\noindent
+\rm De formler der ikke bruges skal kommenteres ud.
+
+\vspace{0.10in}
+\noindent
+\rm for cirkulære ribber
+
+\vspace{0.10in}
+\noindent
+\rm rektangulære ribber = flugtende rør eller ved 1 rørrække
+\begin{equation}
+\label{EES Eqn:24}
+\beta = 1,27 \cdot  \sqrt{  \frac { \left( s_{q}/2 \right) }{  \left( s_{r}/2 \right)  }- 0,3  }	 
+\mbox{\I sekskantede ribber = forsatte rør }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Grundlagen der värmeübertragung s. 103
+
+\vspace{0.10in}
+\noindent
+\rm $^{Ribberørrækketal}$  $^{}$      1     $^{}$      2     $^{}$      3     $^{}$   $>$= 4  $^{}$\newline
+	$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+	$^{}$ Flugtende     m    $^{}$   0.53   $^{}$   0.61    $^{}$   0.67   $^{}$   0.68   $^{}$\newline
+	$^{}$                     C    $^{}$   0.37  $^{}$   0.295   $^{}$   0.22   $^{}$   0.16   $^{}$\newline
+	$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+	$^{}$ Forsatte        m   $^{}$   0.53   $^{}$   0.56    $^{}$   0.60   $^{}$   0.63   $^{}$\newline
+     $^{}$                      C   $^{}$   0.37   $^{}$   0.39    $^{}$   0.41   $^{}$   0.43   $^{}$\newline
+	$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+
+\begin{equation}
+\label{EES Eqn:25}
+m = 0,60		 
+\mbox{\I Aflæst værdi for m}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:26}
+C = 0,41	 
+\mbox{\I Aflæst værdi for C}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Andet om luften
+\begin{equation}
+\label{EES Eqn:27}
+c_{L} = 3   \   \left[ \rm m/s \right]	 
+\mbox{\I strømningshastighed for luft ved mindste tværsnit gennem varmeveksler [m/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:28}
+p_{L} = 1   \   \left[ \rm bar \right] 	 
+\mbox{\I Lufttrykket [bar]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm Kompressorens datablad
+\begin{equation}
+\label{EES Eqn:29}
+\V{disp} _{k} = 5,08   \   \left[ \rm cm^{3} \right] \cdot  \rm { \left|1,\times 10^{ \cdot 6}\ \frac {\rm{m^{3}}}{\rm{cm^{3}}}\right|}	 
+\mbox{\I displacement i Kompressor [m$^{3}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:30}
+\V{rpm}  = 4000   \   \left[ \rm 1/min \right] \cdot  \rm { \left|0,016666667\ \frac {\rm{1/s}}{\rm{1/min}}\right|}	 
+\mbox{\I omdrejningshastighed af kompressoren [s$^{-1}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:31}
+\eta_{V} = 0,68	 		 
+\mbox{\I Excel dokument om kompressor }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Der skal ikke indtastes mere data efter det her----------------------------------------------------------------------------------------------------------------------------------------------
+\begin{equation}
+\label{EES Eqn:32}
+q_{Vs} = \V{disp} _{k}\cdot \V{rpm	}  
+\mbox{\I slagvolumensstrøm af kompressor [m$^{3}$/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:33}
+q_{VR} = q_{Vs}\cdot \eta_{V	} 
+\mbox{\I volumenstrømmen af kølemidlet før kompressor [m$^{3}$/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:34}
+c_{R;2} = q_{VR}/S_{i	} 
+\mbox{\I Strømningshastigheden af kølemidlet før kompressor }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:35}
+q_{mR} = q_{VR} \cdot  \rho_{R;2} 	 
+\mbox{\I massestrøm af kølemidlet [kg/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:36}
+\rho_{R;2} = \density \left(\F{R}\$;\mbox{\ T}=t_{R;2};\mbox{\ x}=1 \right) 	 
+\mbox{\I Densitet af kølemidlet før kompressoren (x = dampmængden mellem 0 og 1) [kg/m$^{3}$]}
+\end{equation}
+
+
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er massestrømmen af kølemidlet bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+ \newline
+1 - Beregn den logaritmiske temperaturdifferens, ${\delta t}$$_{m}$\newline
+ \newline
+      1.1 - til dette benyttes formlen for middeltemperaturdifferens fra Aages noter om lamelvarmevekslere. [formel (9.69) i termodynamik 3. udgave]
+\begin{equation}
+\label{EES Eqn:37}
+{\delta t}_{mkryds} = \epsilon \cdot  {\delta t}_{m		} 
+\mbox{\I (9.70) termodynamik 3. udgave }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:38}
+{\Delta t}_{m} = \frac { \left(  \left( t_{L;2} - t_{R;1} \right)  -  \left( t_{L;1} - t_{R;2} \right)  \right) }{  \left( \ln{ \left( \frac {t_{L;2} - t_{R;1}}{ t_{L;1} - t_{R;2} } \right) } \right) 	 } 
+\mbox{\I (9.69) termodynamik 3. udgave }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm \newline
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+ \newline
+2 - Beregn den totale Varmeovergangsmodstand, SigmaR\newline
+ \newline
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+ \newline
+2.1 - Beregn Varmeovergangsmodstand, R$_{ou}$, ved konvektion udvendigt p\aa lameller og rør\newline
+ \newline
+     2.1.1 - bestem varmeovergangstal p\aa lameller og rør til luft, $\alpha$$_{u}$, ud fra Th. E. Schmidts modelligning for Nusselts tal p\aa ribberørbundt\newline
+ \newline
+            2.1.1.1 - beregn Nusselts tal ved brug af 2. del af modelligningen
+\begin{equation}
+\label{EES Eqn:39}
+\V{Nuu}  = C \cdot   \left( \V{Re} _{u} \right) ^{m} \cdot   \left( A_{t}/A_{0} \right) ^{m-1} \cdot  \V{Pr} _{u}^{0,33}		 
+\mbox{\I formel for Nusselts tal udvendigt på varmeveksler }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:40}
+\V{Re} _{u} = c_{L} \cdot  d_{u}/\V{nu		} 
+\mbox{\I Reynolds tal udvendigt på varmeveksler }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:41}
+\nu = \kinematicviscosity \left(\F{Air}_{ha};\mbox{\ T }= t_{Lm};\mbox{\ P }= p_{L} \right) 	 
+\mbox{\I Kinematisk viskositet for den omkringliggende luft [m$^{2}$/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:42}
+A_{t} = A_{0} +  \left( b_{ribber}\cdot N_{serie}\cdot h_{ribber} -  \left( d_{u}/2 \right) ^{2}\cdot \pi\cdot N_{rør} \right) \cdot 2\cdot N_{ribber	} 
+\mbox{\I Total udvendigt overfladeareal af rør og ribber [m$^{2}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:43}
+A_{0} = d_{u} \cdot  \pi \cdot  L_{rør} -  \left( d_{u} \cdot  \pi \cdot  \V{tykkelse} _{ribber} \cdot  N_{ribber} \right) 	 
+\mbox{\I Total udvendigt overfladeareal af rør mellem ribber [m$^{2}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:44}
+\V{Pr} _{u} = \prandtl \left(\F{Air}_{ha};\mbox{\ T }= t_{Lm};\mbox{\ P }= p_{L} \right) 		 
+\mbox{\I Prandtls tal udvendigt på varmeveksler }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er der bestemt en værdi for Nusselts tal!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.1.1.2 - beregn $\alpha$$_{u}$ ud fra nusselt tal og 1. del af modelligningen
+\begin{equation}
+\label{EES Eqn:45}
+\V{Nuu}  = \alpha_{u} \cdot  d_{u}/\lambda_{L	} 
+\mbox{\I Generel formel for Nusselts tal benyttes til at bestemme alpha$_{u}$}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:46}
+\lambda_{L} = \conductivity \left(\F{Air}_{ha};\mbox{\ T }= t_{Lm};\mbox{\ P }= p_{L} \right) 	 
+\mbox{\I Varmekonduktivitet for luften [W/(m*K)]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er varmeovergangstallet udvendigt p\aa rørene/ribber $\alpha$$_{u}$ bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.1.2 - Bestem det ydre overfladeareal, A$_{u}$ (denne er allerede udregnet som A$_{t}$ i afsnit 2.1.1.1)
+\begin{equation}
+\label{EES Eqn:47}
+A_{u} = A_{t} 
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.1.3 - Bestem finnevirkningsgraden, $\eta$$_{R}$\newline
+                  2.1.3.1 - Dette gøres som beskrevet i Danvak Grundbog s. 424 version 3.
+
+\vspace{0.10in}
+\noindent
+\rm for en varmeveksler med forsatte rør antages der at finnevirkningsgraden kan beregnes som angivet p\aa Figur 14.10 i Danvak
+\begin{equation}
+\label{EES Eqn:48}
+\eta_{R} = \frac {\tanh{ \left( L \cdot  \psi \right) }}{  \left( L \cdot  \psi \right)  } 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:49}
+L = l_{ribbe} \cdot  \sqrt{  \frac { \left( 2 \cdot  \alpha_{u} \right) }{  \left( lampda_{Ribber} \cdot  tykkelse_{Ribber} \right)  }  } 	 
+\mbox{\I L er en enhedsløs størrelse [ligning (14.7) Danvak] }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:50}
+l_{ribbe} =  \left( s_{q}/2 \right)  -  \left( d_{u}/2 \right) 		 
+\mbox{\I ribbehøjden regnet ud fra figur 14.10 Danvak }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:51}
+\V{lampda} _{Ribber}=\conductivity \left(\F{Ribbe}\$;\mbox{\ T}=t_{R;2} \right)      	 
+\mbox{\I Varmekonduktivitet for ribber, her ses på materialet for ribberne }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:52}
+\psi = 1 + 0,35 \cdot  \beta \cdot  \ln{ \left( \frac {s_{q}/2}{ d_{u}/2} \right) }		 
+\mbox{\I Dimensionsløs størrelse fra (14.10) i Danvak }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\beta$ st\aar ved de indtastede variabler
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ kan punkt 2.1 bestemmes (Beregn varmeovergangsmodstand, R$_{ou}$, ved konvektion udvendigt p\aa lameller og rør)
+
+\vspace{0.10in}
+\noindent
+\rm det gøres med formlen:
+\begin{equation}
+\label{EES Eqn:53}
+R_{ou} = \frac {1}{  \left( \alpha_{u} \cdot  A_{u} \cdot  \eta_{R} \right)  } 
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er varmeovergangsmodstanden R$_{ou}$ bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm Beregning af indvendigt varmeovergangstal og derefter varmeovergangsmodstand ved konvektion indvendigt i røret
+
+\vspace{0.10in}
+\noindent
+
+
+% ____________ Hertil er der sat lignigner ind
+\rm 2.2 - Beregn Varmeovergangsmodstand, R$_{oi}$, ved konvektion indvendigt i rør\newline
+ \newline
+            2.2.1 - Bestem varmeovergangstallet over rørets indervæg, $\alpha$$_{i.}$ Dette gøres ud fra Bo Pierres metode [køleteknik afsnit 6]\newline
+                  2.2.1.1 - Bestem nusselts tal med Bo Pierres metode
+\begin{equation}
+\label{EES Eqn:54}
+\V{Nui}  = 0,0075 \cdot   \left( \V{Re} _{i}^{2} \cdot  K_{f} \right) ^{0,4}	 
+\mbox{\I Nusselts tal indvendig ved tør operation [formel 6.29 - køleteknik]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:55}
+\V{Re} _{i} = q_{mR} \cdot  \frac {d_{i}}{  \left( S_{i} \cdot  \eta_{l} \right) 	 } 
+\mbox{\I Reynolds tal indvendig}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:56}
+S_{i} = \pi/4\cdot  d_{i}^{2}	 
+\mbox{\I Rørets indvendige tværsnitareal [m$^{2}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:57}
+\eta_{l} = \viscosity \left(\F{R}\$;\mbox{\ T }= t_{R;1};\mbox{\ x }= 0 \right) 	 
+\mbox{\I Dynamisk viskositet for kølemiddel i mættet væsketilstand (x=0) [kg/(m*s)]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:58}
+K_{f} = \frac {r}{  \left( L_{rør}\cdot g \right) 	 } 
+\mbox{\I Kogtal}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:59}
+r = \enthalpyvaporization \left(\F{R}\$;\mbox{\ T}=t_{R;1} \right) 	 
+\mbox{\I Fordampningsvarme [J/kg]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:60}
+g = 9,82   \   \left[ \rm m/s^{2} \right]	 
+\mbox{\I Tyngdeacceleration [m/s$^{2}$]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er Nusselts tal for indersiden af fordamperen bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.1.1.2 - beregn $\alpha$$_{i}$ ud fra nusselts tal og 1. del af modelligningen
+
+\vspace{0.10in}
+\noindent
+\rm Ud fra Nusselts tal, kan varmeovergangstallet bestemmes med formel [6.30]
+\begin{equation}
+\label{EES Eqn:61}
+\V{Nui}  = \alpha_{i} \cdot  d_{i}/\lambda_{Rl	} 
+\mbox{\I General formel for Nusselts tal}
+\end{equation}
+% ___ Hertil at lignignerne sat ind. 
+\begin{equation}
+\label{EES Eqn:62}
+\lambda_{Rl} = \conductivity \left(\F{R}\$;\mbox{\ T}=t_{R;1};\mbox{\ x }= 0 \right)   	 
+\mbox{\I Varmekonduktivitet for kølemiddel i mættet væsketilstand [W/(m*K)]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er varmeovergangstallet $\alpha$$_{i}$ bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm Herefter beregnes 2.2 (Beregn Varmeovergangsmodstand, R$_{oi}$, ved konvektion indvendigt i rør)
+
+\vspace{0.10in}
+\noindent
+\rm Det gøres med formlen fra noter fra Aage (Formel 9.23, termodynamik 3. udgave)
+\begin{equation}
+\label{EES Eqn:63}
+R_{oi} = \frac {1}{  \left( \alpha_{i} \cdot  A_{i} \right) 	 } 
+\mbox{\I Varmeovergangsmodstand indvendigt på røret [K/W]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:64}
+A_{i} = d_{i} \cdot  \pi \cdot  L_{rør	} 
+\mbox{\I Overfladeareal indvendigt på rørene [m$^{2}$]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er varmeovergangsmodstanden, R$_{oi}$, bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.3 - Beregn Varmeovergangsmodstand i rørvæg, R$_{rør}$\newline
+ \newline
+            2.3.1 - dette gøres med formlen for varmeledningsmodstand i rørvæg [noter om lamelvarmeveklser - eller termodynamik afsnit 9]
+\begin{equation}
+\label{EES Eqn:65}
+R_{rør} = \frac {\ln{ \left( d_{u}/d_{i} \right) }}{  \left( \lambda_{rør} \cdot  2 \cdot  \pi \cdot  L_{rør} \right) 	 } 
+\mbox{\I Varmeledningsmodstand gennem rørvæggen [K/W]	Formel 9.15, termodynamik 3. udgave}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:66}
+\lambda_{rør} = \conductivity \left(\F{rør}\$;\mbox{\ T}=t_{R;1} \right)  	 
+\mbox{\I Varmekonduktivitet for rør [W/(m*K)]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ er varmeovergangsmodstanden i rørvæggen ogs\aa bestemt!
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm 2.4 - læg de tre varmeovergangsmodstande sammen
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ beregnes SigmaR ved at lægge de tre modstande sammen:
+\begin{equation}
+\label{EES Eqn:67}
+\V{SigmaR}  = R_{ou} + R_{oi} + R_{rør} 	 
+\mbox{\I Totale varmeovergangsmodstand fra luft til væske [K/W]}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm $_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\newline}$
+$_{;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;}$
+
+\vspace{0.10in}
+\noindent
+\rm $\nu$ hvor SigmaR og ${\delta t}$$_{mkryds}$ kendes, kan kuldeydelsen, $\phi$$_{V}$, og Varmegennemgangstallet U, bestemmes
+
+\vspace{0.10in}
+\noindent
+\rm Det gøres med varmetransmissionsligningen [ligning 3 i noter om lamelvarmevekslere]:
+\begin{equation}
+\label{EES Eqn:68}
+\phi_{V} = \frac {{\delta t}_{mkryds}}{ \V{SigmaR	} } 
+\mbox{\I Ligning 2.31 i køleteknik 3. udgave}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:69}
+\frac {{\delta t}_{mkryds}}{ \V{SigmaR} }= U \cdot  A_{u} \cdot  {\delta t}_{mkryds	} 
+\mbox{\I Ligning 2.31 i køleteknik 3. udgave}
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm Beregning af entalpier ud fra $\phi$
+\begin{equation}
+\label{EES Eqn:70}
+q_{mR} \cdot   \left( h_{R;1} - h_{R;2} \right)  + \phi_{V} = 0	 
+\mbox{\I energibalance for kølemidlet }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:71}
+h_{R;1} = \enthalpy \left(\F{R}\$;\mbox{\ T }= t_{R;1};\mbox{\ x }= 0 \right) 		 
+\mbox{\I x = dampmængde, 0 = væske , 1 = damp }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm dampmængde i kølemidlet - melder fejl hvis det hele er fordampet
+\begin{equation}
+\label{EES Eqn:72}
+q_{mL} \cdot   \left( h_{L;1} - h_{L;2} \right)  - \phi_{V} = 0	 
+\mbox{\I energibalance for luftsiden }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:73}
+q_{mL} = q_{vL} \cdot  \rho_{L	} 
+\mbox{\I massestrøm af luft [kg/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:74}
+\rho_{L} = \density \left(\F{Air}_{ha};\mbox{\ T }= t_{Lm};\mbox{\ P }= p_{L} \right) 	 
+\mbox{\I luftens densitet [kg/m$^{3}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:75}
+q_{vL} = c_{L} \cdot  A_{luftstrøm	} 
+\mbox{\I volumenstrøm af luft [m$^{3}$/s]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:76}
+A_{luftstrøm} = L_{1rør} \cdot  h_{ribber} -  \left( d_{u}\cdot L_{1rør} \cdot   \left( N_{rør}/N_{rækker} \right)  \right)  
+\mbox{\I tværsnitsarealet luften passerer gennem [m$^{2}$]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:77}
+h_{L;1} = \enthalpy \left(\F{Air}_{ha};\mbox{\ T }= t_{L;1};\mbox{\ P }= p_{L} \right) 	 
+\mbox{\I entalpi for luft før fordamper [J/kg]}
+\end{equation}
+\begin{equation}
+\label{EES Eqn:78}
+t_{L;3} = \temperature \left(\F{Air}_{ha};\mbox{\ P }= p_{L};\mbox{\ h }= h_{L;2} \right) 	 
+\mbox{\I temperatur på luft efter fordamper [K] }
+\end{equation}
+
+\vspace{0.10in}
+\noindent
+\rm anbefalet temperatur
+\begin{equation}
+\label{EES Eqn:79}
+t_{LC;4} = \frac {t_{LC;2} + t_{LC;3}}{ 2	 } 
+\mbox{\I Gennesmsnittet af temperatur gæt og beregning }
+\end{equation}
+\begin{equation}
+\label{EES Eqn:80}
+t_{LC;1} = \mbox{ConvertTemp}{ \left( K;\ C;\ t_{L;1} \right) } 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:81}
+t_{LC;2} = \mbox{ConvertTemp}{ \left( K;\ C;\ t_{L;2} \right) } 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:82}
+t_{LC;3} = \mbox{ConvertTemp}{ \left( K;\ C;\ t_{L;3} \right) } 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:83}
+t_{L2gæt} = t_{lC;2} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:84}
+t_{L2beregnet} = t_{lC;3} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:85}
+t_{L2kvalbud} = t_{lC;4} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:86}
+t_{Lfør} = t_{LC;1} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:87}
+\phi_{1} = \phi_{V} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:88}
+\phi_{2} = \phi_{ønsk} 
+\end{equation}
+\begin{equation}
+\label{EES Eqn:89}
+U_{2} = U 
+\end{equation}
+
+\end{document}

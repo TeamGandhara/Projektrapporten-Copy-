@@ -1,0 +1,216 @@
+\documentclass[../Hovedrapport.tex]{subfiles}
+\newcommand{\gray}{\rowcolor[gray]{0.95}}
+\begin{document}
+%\vspace{-30pt}
+%------------------------------------------------------------------------------
+\section{Dimensionering af kondensator}
+    \label{sec:dim_kondensator}
+I det følgende foretages dimensioneringen af kondensatoren i form af en luftkølet lamelvarmeveksler.Dette gøres ved at beregne varmeovergangstallene udvendigt og indvendigt, samt at beregne de tre termiske modstande. Disse benyttes, til at beregne en kondensatorkapacitet, som sammenholdes med den kapacitet, som kompressor kan sikre, ved dets maksimale omdrejningstal. \\
+Forud for dimensioneringen af kondensatoren, oplyses de givet data i tabel \ref{tab:kondensator_Data}:
+
+
+%------------------------------TABEL START----------------------------
+\begin{table}[H] 
+	\centering
+	% \caption*{\textbf{\large Kondensatordata}} 
+	% \vspace{-0.3cm}
+	\begin{tabular}{|c|l|l|c|}  \rowcolor[gray]{0.5}                                \hline
+	\multicolumn{4}{|c|}{\textbf{Kondensatordata}}                               \\ \hline \rowcolor[gray]{.8}
+	\textbf{Variabel}   & \textbf{Værdi}        & \textbf{Forklaring}       & \textbf{Kilde}    \\ \hline \rowcolor[gray]{.95}
+	L_\text{rør}        & \SI{5,28}{\meter}     & Rørlængde i kondensator   & Målt              \\ \hline \rowcolor[gray]{.95} 
+	d_\text{i}          & \SI{7}{\milli\meter}  & Indre rørdiameter         & Målt              \\ \hline \rowcolor[gray]{.95}
+	d_\text{y}          & \SI{8}{\milli\meter}  & Ydre rørdiameter          & Målt              \\ \hline \rowcolor[gray]{.95}
+	b_\text{ribber}     & \SI{0,037}{\meter}    & Ribbebredde               & Målt              \\ \hline \rowcolor[gray]{.95}
+	h_\text{ribber}     & \SI{0,2}{\meter}      & Ribbehøjde                & Målt              \\ \hline \rowcolor[gray]{.95}
+	t_\text{ribber}     & \SI{0,001}{\meter}    & Ribbetykkelse             & Målt              \\ \hline \rowcolor[gray]{.95}
+	N_\text{ribber}     & 71                    & Antallet af ribber        & Målt              \\ \hline \rowcolor[gray]{.95}
+	N_\text{rørrækker}  & 3                     & Antallet af rørrækker     & Målt              \\ \hline \rowcolor[gray]{.95}
+	N_\text{rør}        & 24                    & Antallet af rør           & Målt              \\ \hline \rowcolor[gray]{.95}
+	N_\text{serie}      & 1                     & Antal kondensatore i serie& Målt              \\ \hline \rowcolor[gray]{.5}
+	\multicolumn{4}{|c|}{\textbf{Anlægsdata}}                                                   \\ \hline \rowcolor[gray]{.8}
+	\textbf{Variabel}   & \textbf{Værdi}        & \textbf{Forklaring}       & \textbf{Kilde}    \\ \hline \rowcolor[gray]{.95}
+	x_\text{g}          & 1                     & Dampkvalitet før kondensator - mættet gas   & \\ \hline \rowcolor[gray]{.95}
+	x_\text{L}          & 0                     & Dampkvalitet før kondensator - væske & \\ \hline \rowcolor[gray]{.95}
+	g                   & \SI{9,82}{m/s^2}      & Tyngdeaccelerationen                        & \\ \hline \rowcolor[gray]{.95}
+	C                   & 0,41                  & Faktor C for fortsatte røranordning         & Aages noter \\ \hline \rowcolor[gray]{.95}   
+	m                   & 0,60                  & Eksponent m for fortsatte røranordning      & Aages noter \\ \hline \rowcolor[gray]{.95}
+	t_\text{rk}          & \SI{50}{\celsius}     & Kondenseringstemperaturen                   &             \\ \hline \rowcolor[gray]{.95}
+	t_\text{L,1}        & \SI{30}{\celsius}     & Lufttemperaturen før kondensatoren          & Antagelse   \\ \hline \rowcolor[gray]{.95}
+	t_\text{L,2}        & \SI{35,35}{\celsius}  & Lufttemperaturen efter kondensatoren        & Antagelse   \\ \hline \rowcolor[gray]{.95}
+	
+	\end{tabular} 
+	\caption{\textit{Variabeloversigt til dimensionering af kondensatoren}} 
+	\label{tab:kondensator_Data} 
+	\vspace{-20pt}
+\end{table} \\ \\
+
+
+
+
+
+
+
+
+
+
+
+%-------------------------------  INDVENDIG   ------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+\subsection{Beregning af indvendig varmeovergangstal og overgangsmodstand, $\alpha_i$ og $R_i$}
+Den forsimplede beregningsmetode, gældende for \textit{Reynolds Tal} under 35.000 benyttes. Dette er nødvendigt, da fremgangsmåden med \textit{Lockhart-Martinelli Parameteren} er yderst kompliceret. Beregningsformlen fremgår af ligning \ref{eqn:alfa_i}:
+%-----------------------------------------------------------------------
+\begin{equation}
+\label{eqn:alfa_i}
+\V{\alpha}_{i}   = 0,555\cdot  \left( \frac {\lambda_{rl}^{3}\cdot \rho_{rl}\cdot  \left( \rho_{rl}-\rho_{rg} \right) \cdot r\cdot g}{\eta_{dyn} \cdot  \left( t_{rk}-t_{v} \right) \cdot d_{i} } \right) ^{0,25}	 
+\mbox{\I \textit{Køleteknik, Ligning 6.39, side 200}}
+\end{equation}
+
+%------------------------------TABEL START-----------------------------
+\newpage
+Data til beregning af den indvendige varmeovergangstal bestemmes i EES, og er oplistet i tabel \ref{tab:alfa_i_data}:
+
+\begin{table}[H] 
+\centering
+\begin{tabular}{|c|l|l|c|}  \rowcolor[gray]{0.5}                                \hline
+\multicolumn{4}{|c|}{\textbf{Data til beregning af indre varmeovergangstal}}                                                   \\ \hline \rowcolor[gray]{.8}
+\textbf{Variabel}   & \textbf{Værdi}        & \textbf{Forklaring} & \textbf{Kilde}    \\ \hline \rowcolor[gray]{.95}
+\lambda_{rl}        & \SI{0.07038}{\frac{W}{m \cdot K}}           & Konduktivitet for R134a ved $t_{rk}$ og $x_L$   & EES \\ \hline \rowcolor[gray]{.95}
+
+\rho_\text{Rl}   & \SI{1102}{\frac{kg}{m^3}} & Densitet af R134a på væskeform ved $t_{rk}$ og $x_L$ & EES \\ \hline \rowcolor[gray]{.95}
+\rho_\text{Rg}   & \SI{66,32}{\frac{kg}{m^3}} & Densitet af R134a på gasform ved $t_{rk}$ og $x_g$ & EES \\ \hline \rowcolor[gray]{.95}
+r           & \SI{151794}{\frac{J}{kg}} & Fordampningsvarme af R134a ved $t_{rk}$ & EES \\ \hline \rowcolor[gray]{.95}
+\eta_\text{dyn} & \SI{0,0001416}{\frac{kg}{m\cdot s}} & Dynamisk viskositet for R134a ved $t_{rk}$ og $x_L$ & EES \\ \hline \rowcolor[gray]{.95}
+t_v         & \SI{48,05}{\celsius}      & Indre vægtemperatur - Korrigeret ved gætning                      & Gæt \\ \hline \rowcolor[gray]{.95}
+% p_\text{oh} & 0,16 & Andel af rørlængden som overheder & Danvak \\ \hline \rowcolor[gray]{.95}
+% p_\text{uk} & 0,20 & Andel af rørlængden som underkøles & Danvak \\ \hline \rowcolor[gray]{.95}
+	\end{tabular} 
+	\caption{\textit{Variabeloversigt til beregning af den indre varmeovergangstal}} 
+	\label{tab:alfa_i_data} 
+\end{table} \\
+%------------------------------TABEL SLUT-----------------------------
+Herefter beregnes den indre varmeovergangstal, ved indsætning af data fra tabel \ref{tab:alfa_i_data} i ligning \ref{eqn:alfa_i}:
+
+\begin{equation}
+\label{eqn:alfa_i_b}
+\V{\alpha}_{i}   = 0,555\cdot  \left( \frac {\lambda_{rl}^{3}\cdot \rho_{rl}\cdot  \left( \rho_{rl}-\rho_{rg} \right) \cdot r\cdot g}{\eta_{dyn} \cdot  \left( t_{rk}-t_{v} \right) \cdot d_{i} } \right) ^{0,25} = \SI{2309}{\frac{W}{m^2 \cdot K}}
+\end{equation}
+
+Dernæst beregnes den indre termiske modstand også. Dette fortages ved beregning af den rørlængde som går til overhedning og dernæst rørets indre overfladeareal:
+\begin{align*}
+% L_{oh} &= L_\text{rør} \cdot p_{oh}      &&= \SI{0,8448}{m} \tag*{Rørlængde til overhedning}       \\
+A_o_i  &= \pi \cdot d_i \cdot L_\text{rør} &&= \SI{0,1161}{m^2} \tag*{\textit{Indre overfladeareal}} \\
+R_i    &= \frac{1}{\alpha_i \cdot A_{oi}}  &&= \SI{0,003731}{\frac{K}{W}} \tag*{\textit{Indre overgangsmodstand}}                                                                                   \\
+\end{align*}
+
+%-------------------------------   UDVENDIG   ------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+\subsection{Beregning af udvendig varmeovergangstal og overgangsmodstand, $\alpha_u$ og $R_u$}
+
+Af tabel \ref{tab:alfa_u_data} fremgår beregningsvariablerne til beregning af den ydre varmeovergangstal og varmeovergangsmodstand:
+%--------------------------------------------------------------------------------------
+\begin{table}[H] 
+\centering
+\begin{tabular}{|c|l|l|c|}  \rowcolor[gray]{0.5}                                \hline
+\multicolumn{4}{|c|}{\textbf{Data til beregning af indre varmeovergangstal}}                                                   \\ \hline \rowcolor[gray]{.8}
+\textbf{Variabel}   & \textbf{Værdi}        & \textbf{Forklaring} & \textbf{Kilde}    \\ \hline \rowcolor[gray]{.95}
+c_L & \SI{3}{\frac{m}{s}} & Lufthastighed over kondensatorrør   & Målt \\ \hline \rowcolor[gray]{.95}
+t_{L1}  & \SI{30}{\celsius}     & Lufttemperatur før kondensator    & Antaget \\ \hline \rowcolor[gray]{.95}
+t_\text{L2}  & \SI{35,35}{\celsius}  & Lufttemperatur efter kondensator  & Korrigeret, gæt \\ \hline \rowcolor[gray]{.95}
+t_{Lm}  & \SI{32,65}{\celsius}  & Middellufttemperatur ift. t_{L1} og t_{L2}  &  \\ \hline \rowcolor[gray]{.95}
+p_{L1}  & \SI{1}{\bar}  & Lufttrykket udenfor rørene  & Antaget \\ \hline \rowcolor[gray]{.95}
+\lambda_{L}        & \SI{0.02682}{\frac{W}{m \cdot K}}           & Konduktivitet for luft ved $t_{Lm}$ og $p_{L1}$   & EES \\ \hline \rowcolor[gray]{.95}
+\lambda_{ribbe}        & \SI{237,3}{\frac{W}{m \cdot K}}           & Konduktivitet for alu. ribber ved $t_{k}$ og & EES \\ \hline \rowcolor[gray]{.95}
+Pr_{L} & 0,7062 & Prandtls Tal for luft ved $t_{Lm}$ og $p_{L1}$  & EES \\ \hline \rowcolor[gray]{.95}
+\nu_{L} & \SI{0,00001652}{\frac{m^2}{s}} & Kinematisk viskositet for luft ved $t_{Lm}$ og $p_{L1}$ & EES \\ \hline \rowcolor[gray]{.95}
+	\end{tabular} 
+	\caption{\textit{Variabeloversigt til beregning af den indre varmeovergangstal}} 
+	\label{tab:alfa_u_data} 
+\end{table} \\
+%--------------------------------------------------------------------------------------
+Konstanterne C og m er opslået i Aages noter til beregning af varmeovergangstallet for lamelvarmevekslere med to forsatte rørrækker:
+%---------------------------------------------------------------------------------
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|} \hline \rowcolor[gray]{.95}
+    \multicolumn{6}{|c|}{Værdier for c og M ud fra rørrækkeantal}              \\ \hline
+    \multicolumn{2}{|c|}{Ribberørrækker} & 1  & 2  & 3  & >=4       \\ \hline
+    \multirow{2}{*}{Flugtende} & m  & 0,53 & 0,61  & 0,67  & 0,68   \\ \cline{2-6}
+     & C  & 0,37  & 0,295  & 0,22  & 0,1                            \\  \hline
+    \multirow{2}{*}{Forsatte} & m  & 0,53  & 0,56  & \cellcolor{green!25} 0,60  & 0,63   \\ \cline{2-6}
+     & C  & 0,37  & 0,39  & \cellcolor{green!25} 0,41 & 0,43                             \\ \hline
+    \end{tabular}
+    \end{table}
+%---------------------------------------------------------------------------------
+Først bestemmes den totale overfladeareal af kondensatorrør mellem ribberne, $A_0$, samt den totale udvendige overfladeareal af kondensatorrør og ribber, $A_t$:
+
+\begin{align*}
+A_{0}  &= \pi \cdot d_u \cdot L_\text{rør} - {\pi \cdot d_u \cdot t_{ribber} \cdot N_{ribber}} &&= \SI{0,1328}{m^2} \\
+A_{t}  &= A_0 + \left( b_{ribber} \cdot N_{serie} \cdot h_{ribber} -  \left( \frac{d_u}{2} \right)^{2} \cdot \pi \cdot N_\text{rør} \right) \cdot N_\text{række} \cdot N_{ribber} &&= \SI{1,012}{m^2}\\
+\end{align*}
+
+Herefter bestemmes en middelværdi for \textit{Nussels Tal} udvendigt, som benyttes til at beregne den udvendige varmeovergangstal:
+
+\begin{align*}
+Re_{L} &= \frac{c_L \cdot d_u}{\nu_L} && = 1452 &\tag*{Reynolds Tal for luft} \\
+Nu_u   &= C \cdot Re_{L}^{m} \cdot \left(\frac{A_t}{A_0} \right) ^{m-1} \cdot Pr_u^{0,33} &&= 12,8 &\tag*{Nusselts Ta udvendigt - Aages noterl} \\
+\alpha_u &= \frac{Nu_u \cdot \lambda_L}{d_u} &&= \SI{42,91}{\frac{W}{m^2 \cdot K}} &\tag*{Udvendig varmeovergangstal} \\
+\end{align*}
+
+For at bestemme den udvendige varmeovergangsmodstand, bestemmes varmevekslerens finnevirkningsgrad. Dette foretages i henhold til proceduren i Danvak kapitel 14. Først bestemmes ribbehøjden, $ l_{ribber} $. Heri indgår konstanterne $s_q = \SI{0,025}{m}$ og $s_r = \SI{0,018}{m}$:
+
+\begin{align*}
+l_{ribber} &= \frac{s_q}{2} - \frac{d_u}{2} &&= \SI{0,0085}{m} &\tag*{\textit{Ribbehøjden - Danvak figur 14.10}} \\
+L          &= l_{ribber} \cdot \sqrt{\frac{2 \cdot \alpha_u}{\lambda_{ribber} \cdot t_{ribber}}} &&= 0,5111 &\tag*{\textit{L, enhedsløs - Danvak ligning 14.7}} \\
+\beta      &= 1,27 \cdot \sqrt{\frac{\frac{s_q}{2}}{\frac{s_r}{2}}-0,3} &&= 0,037 & \tag*{\beta, enhedsløs - Danvak figur 14.10} \\
+\Psi       &= 1+0,35 \cdot \beta \cdot \ln{\left(  \frac{\frac{s_q}{2}}{\frac{s_r}{2}} \right)} &&= 1,529 & \tag*{\Psi, enhedsløs - Danvak figur 14.10} \\
+\end{align*}
+
+Hernæst beregnes ribbevirkningsgraden, som benyttes til at beregne den udvendige varmeovergangsmodstand:
+
+\begin{align*}
+\eta_{ribber} &= \frac{\tanh{L \cdot \Psi}}{L \cdot \Psi} &&= 0,8364 &\tag*{Danvak figur 14.10} \\
+R_u           &= \frac{1}{\alpha_u \cdot A_t \cdot \eta_{ribber}} &&= \SI{0,02754}{\frac{K}{W}} &\tag*{Udvendig termisk modstand}
+\end{align*}
+
+\subsection{Beregning af varmeledningsmodstanden gennem røret, $R_\text{rør}$}
+Endelig bestemmes den sidste termiske modstand, nemlig varmeledningsmodstanden gennem kobberrørvæggen i kondensatoren. Her opslås varmekonduktiviteten for kobber i EES, som benyttes til at beregne varmeledningsmodstanden:
+
+\begin{align*}
+\lambda_{kobber} &= \SI{394,9}{\frac{W}{m\cdot K}} && &\tag*{Konduktivitet for kobber ved} \\
+R_\text{rør}     &= \frac{\ln{\frac{d_u}{d_i}}}{2 \cdot \pi \cdot \lambda_{kobber} \cdot L_\text{rør}} &&= \SI{0,00001019}{\frac{K}{W}} &\tag*{Varmeledningsmodstanden}   
+\end{align*}
+
+\subsection{Beregning af kondensatorens kapacitet, $\Phi_k$}
+Den samlede termiske modstand kan benyttes, til at bestemme kondensatorens kapacitet, og sammenholde denne med kapacitet, som kompressoren kan sikre ved dets maksimale omdrejningstal.
+
+Den samlede termiske modstand og det logaritmiske middeltemperaturdifferens beregnes:
+\begin{align*}
+    R_{total}  &= R_{u}+R_\text{rør}+R_{i} &&= \SI{0,03128}{\frac{K}{W}} \\
+\end{align*}
+
+Herefter skal den logaritmiske middeltemperaturdifferens over kondensatoren bestemmes. Da luftens temperatur, efter den har passeret kondensatoren, er ukendt, skal dette bestemmes. Dette er gjort gennem en iterativ proces, hvor der er gættet på en udgangstemperatur, som er sammenholdt med en beregnet udgangstemperatur. Når disse to værdier, for den samme temperatur er sammenfaldende, er den sande udgangstemperatur fundet. Ved denne proces, er luftens udgangstemperatur bestem til $ t_{L2} = \SI{35,35}{\celsius} $. Herefter bestemmes den logaritmiske middeltemperaturdifferens:
+
+\begin{align*}
+    \Delta t_m &= \frac{\left(t_{k}-t_{L2}\right)-\left(t_{k}-t_{L1} \right)}{\ln{\left( \frac{t_{k}-t_{L2}}{t_{k}-t_{L1}} \right)}} &&= \SI{17,19}{\kelvin}
+\end{align*}
+
+Herefter skal der ganges en korrektionsfaktor, $ \epsilon $, på den logaritmiske middeltemperaturdifferens. En luftventileret lamelvarmeveksler kan betragtes som en krydsvarmeveksler, hvorefter den korrigerede logaritmiske middeltemperaturdifferens bliver:
+
+\begin{align*}
+    \Delta t_{mkryds} &= \Delta t_m \cdot \epsilon &&= \SI{17,19}{\kelvin}
+\end{align*}
+
+Herefter kan kondensatorkapaciteten bestemmes:
+\begin{align*}
+    \Phi_k &= \frac{\Delta t_{mkryds}}{R_{sum}} &&= \SI{549,5}{\watt}
+\end{align*}
+
+Kompressorens datablad påstår, at kompressoren sikre en kondensatorvarme på $\SI{530}{\watt}$ ved dets maksimale omdrejningstal. Dette er betyder, at den valgte fordamper er en smule for stor, men dette tænkes ikke til at være et problem.
+\end{document}

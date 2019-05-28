@@ -1,0 +1,12 @@
+\documentclass[../Hovedrapport.tex]{subfiles}
+\begin{document}
+%\vspace{-30pt}
+%------------------------------------------------------------------------------
+\section{Ventiludvælgelse (C.R. \& M.N.)}
+    \label{sec:dim_ventil}
+Ekspansionsventilen sikrer, at det rigtige trykfald finder sted fra kondenseringstrykket til fordampningstrykket. Ventilen sørger for dette ved at sikre kølemidlets overhedning på 8 K igennem fordamperen. Dette gør den ved at måle temperaturen på kølemidlet før og efter fordamperen, hvorefter den åbner, hvis overhedningen opnås, og lukker hvis kølemiddeltemperaturen efter fordampren er for lav. Herved styrer ekspansionsventilen, hvor meget kølemiddel der skal lukkes igennem fordamperen.
+
+Ekspansionsventilen vælges på baggrund af den ønskede kuldeydelse, samt fordampnings- og kondenseringstemperaturen. Dette er alt sammen fundet i afsnit \ref{sec:kompspec} til $\Phi_0 = \SI{334}{W}$ og \ref{sec:noegletal} til $t_{f} = \SI{-8}{\celsius}$ og $t_{k} = \SI{50}{\celsius}$.
+Ud fra disse faktorer er der i \citep{Coolselector} valgt en ekspansionsventil bilag \ref{sec:bil_ventil}. Den optimale ekspansionsventil er en T2 ekspansionsventil med udskiftelig dyse. Dysen er egentlig den dimensionerende faktor i denne type ekspansionsventil, hvorfor det er denne, der skal vælges. Den valgte dyse er af typen 0X og valget af dyse kan også begrundes ud fra Danfoss' datablad om dysevalg til T2 ekspansionsventil, der ses i bilag \ref{sec:bil_Danfos_dysevalg}.
+%-------------------------------------------------------------------------------
+\end{document}

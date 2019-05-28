@@ -1,0 +1,36 @@
+\documentclass[../Hovedrapport.tex]{subfiles}
+    \begin{document}
+%-------------------------------------------------------------------------
+\chapter{Projektbeskrivelse}
+    \label{chap:projektbeskrivelse}
+    \vspace{-30pt}
+%-------------------------------------------------------------------------
+\section{Problemformulering (Alle)}
+    \label{sec:pr}
+Et køleskab ønskes fremstillet som led i et køleteknisk anlæg med henblik på at skulle stå placeret i en bar. Dette betyder, at køleskabet vil blive udsat for en stor belastning, da det skal kunne holde drikkevarer ved serveringstemperatur under mange døråbninger på kort tid. 
+
+Det ønskes derfor, at køleskabet er i stand til at holde serveringstemperaturen på allerede nedkølede drikkevarer, når der indsættes nye flasker med en væsketemperatur på stuetemperatur. Køleskabet og dets komponenter vil blive dimensioneret ud fra ekstreme, men dog realistiske forhold. Ved det tænkes et worst-case scenarie, hvor køleskabet er i brug på en varm sommerdag ved en omgivelsestemperatur på 30\textdegree C. 
+
+I forlængelse heraf udvælges anlæggets procestemperaturer og aggregatets komponenter på baggrund af termodynamiske beregninger og den heraf ønskede kuldeydelse og kondenseringsydelse. Som hovedkomponent ønskes en kompressor valgt på baggrund af et ønske om at minimere temperatursvingingerne i køleskabet og herved forbedre kvalitet af mad- og drikkevarer.
+
+Køleskabet skal kunne regulere sig selv under ændrede driftsforhold via en PID-regulering. Denne regulering af anlægget skal ske ved hjælp af en bagvedliggende software, som ud fra ændrede driftfaktorer i form af temperaturer og tryk, kan regulerer kompressorens omdrejningstal.
+
+Slutteligt ønskes rapportens beregninger sammenholdt med konkrete forsøg, mens yderligere tre forsøg ønskes foretaget med henblik på at klarlægge, hvad der finder sted, når køleskabet belastes ved indsætning af varme emner samt åbning af døren. 
+
+
+\subsection*{Kravspecifikationer}
+\label{sec:kravspec}
+Primære krav
+\begin{itemize}
+    \item Køleskabet skal være i stand til holde en temperatur på \SI{4}{\celsius} ved stationære driftforhold.
+    \item Kompressoren skal kunne omdrejningsreguleres med henblik på at minimere temperatursvingen ved stationær tilstand til \pm  1\textdegree C. Således bliver temperaturintervallet 3 \textdegree C til 5 \textdegree C og sikrer samtidig at kvaliteten af madvarer bibeholdes, hvis disse ønskes indsat i køleskabet.  
+    \item Kompressorens kuldeydelse skal være så tilstrækkelig stor, at køleskabets indre temperatur vender tilbage til den ønskede i løbet af 1 minut efter åbning af køleskabsdøren i 30 sekunder.
+\end{itemize}
+Sekundære krav
+\begin{itemize}
+    \item Det skal være muligt at ønske en temperatur inden for et interval.
+    \item Serveringstemperaturen på to vandflasker placeret i køleskabet ved stationær tilstand må ikke overstige \SI{7}{\celsius} efter indsættelse af 38 vandflasker ved stuetemperatur. 
+\end{itemize}
+
+
+\end{document}

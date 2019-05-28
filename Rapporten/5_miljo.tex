@@ -1,0 +1,32 @@
+\documentclass[../Hovedrapport.tex]{subfiles}
+    \begin{document}
+%-----------------------------------------------------------------------------------------------------------------
+\chapter{Miljøvurdering (B.B. \& N.J.)}
+    \label{chap:Opstartsfas}
+        \vspace{-30pt}
+%-----------------------------------------------------------------------------------------------------------------
+%\section{Miljøvurdering}
+COP værdien \textit{(Coefficient of performance)} er et udtryk for køleanlæg og varmepumpers virkningsgrad. Det er defineret som et forholdstal mellem den udnyttede varmestrøm og den tilførte el-effekt. I køleskabet, hvor det er kuldeydelsen, $\Phi_0$, som er af interesse, er effekfaktoren derfor givet ved:
+    \begin{align}
+        \label{eq:}
+        \epsilon_{\textit{køl}}= \dfrac{\Phi_0}{P_{el}} = \frac{\SI{334}{\watt}}{\SI{189,1}{\watt}} = 1,77
+    \end{align}
+Ovenstående beregning er identisk med den foretaget i ligning \ref{eq:effektfaktorulle}, i afsnit \ref{sec:effektfaktor_energiforbrug}. Effektfaktoren er beregnet ud fra den teoretiske kuldeydelse og el-effekt. Denne beregnede effektfaktor forudsætter, at det udelukkende er anlæggets kuldeydelse, som udnyttes, samt at kondensatorydelsen forspildes. Hvis det opvarmede gennemblæsningsluft i kondensatoren blev udnyttet til opvarmning af resten af lokalet, som køleskabet er lokaliseret i, bliver effektfaktoren følgende:
+        \begin{align}
+        \epsilon_{\textit{køl}}= \dfrac{\Phi_0+\Phi_k}{P_{el}} =  \frac{\SI{334}{\watt}+\SI{483,9}{\watt}}{\SI{189,1}{\watt}} = 4,3
+    \end{align}
+Da den udnyttede varmestrøm er højere, fremstår anlægget derfor som værende mere effektiv. Dette vil dog i sommermånederne ikke være ligeså favorabelt, idet opvarmning af boligen typisk ikke er ønsket. Her kan det risikeres, at eksempelvis et aircondition eller lignende skal modvirke denne varmetilførsel. Effektfaktoren kan dog anses som et relativt koncept, idet hvilke varmestrømme, som udnyttes eller ej, er en definitionssag.
+
+\subsection*{DC anlæg}
+Et DC-reguleret anlæg kan have op til 40\% bedre energiudnyttelse end et AC anlæg \citep{learneng}. Dette skyldes blandt andet, at AC kompressorer typisk kun bliver anvendt som on/off-regulerede. En regulering på en DC kompressor sikrer derimod, at denne kan køre med et lavere omdrejningstal, når belastningen bliver mindre. Derfor vil denne forbruge mindre strøm.
+
+\subsection*{R134a som kølemiddel}
+Der har igennem længere tid været debat om, hvilke kølemidler, der bør og ikke bør benyttes rent miljøbelastningsmæssigt. Igennem en længere årrække har de såkaldte CFC-kølemidler været anvendt i forskellige køletekniske anlæg, men der er indført et forbud imod dette, da det har vist sig, at disse kølemidler har bidraget til nedbrydelse af ozonlaget. Fra et miljømæssig perspektiv, er dette naturligvis en god ting, men disse kølemidler har netop været bredt anvendt grundet deres gode stabilitet, deres ugiftighed samt at de ikke er brændbare \citep{termo}. 
+
+Kølemidlet R134a anvendes ofte, da dette kølemiddel ikke er skadeligt for ozonlaget \citep{termo}. Dette kølemiddel, som også bliver anvendt i køleskabet, har en \textit{Ozone Depletion Potential} (ODP) på 0 ud af tre. Dog har det et globalt opvarmningspotentiale på 1430, hvilket naturligvis ikke er favorabelt \citep{koelemiddelR}. 
+Globalt opvarmningspotentiale sammenligner kølemidlet i forhold til \ce{CO2} som har et globalt opvarmingspotentiale på én. Dette betyder, at det globale opvarmingspotentiale for R134a er 1430 gange så stort som \ce{CO2} \citep{exp}.
+
+Der bliver derfor i dag anvendt og udviklet en række naturlige kølemidler, hvilket indbefatter eksempelvis ammoniak \ce{NH3}, propan og \ce{CO2}, som belaster klimaet og atmosfæren i mindre grad . \citep{termo}
+
+% Kilder for ovenstående:  https://www.experimentarium.dk/klima/drivhusgasser/ og http://www.aga.dk/da/products_ren/refrigerants/hfc_gases/r134a/index.html
+\end{document}
